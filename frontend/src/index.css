@@ -1,0 +1,102 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+ * Global styles
+ *
+ * We extend the default Tailwind and Ant Design styles to provide a more
+ * contemporary look and feel across the application. These overrides
+ * introduce softer backgrounds, rounded corners and subtle shadows on
+ * containers, tables and buttons. Form labels and controls are also
+ * adjusted to improve legibility and usability. Feel free to tweak
+ * colours or spacing here for a more personalised theme.
+ */
+
+/* Set a light background and sensible text colour for the entire app */
+body {
+  /* Set a slightly darker grey background for a modern dashboard feel */
+  @apply bg-gray-100 text-gray-800 font-sans;
+}
+
+/* Ant Design card enhancements */
+.ant-card {
+  @apply rounded-xl shadow-md border border-gray-200 bg-white;
+}
+
+.ant-card-head-title {
+  @apply text-gray-800 text-xl font-semibold;
+}
+
+/* Tables look cleaner with rounded corners and overflow hidden */
+.ant-table {
+  @apply rounded-lg overflow-hidden shadow-sm;
+}
+
+/* Primary buttons take on our chosen accent colour */
+.ant-btn-primary {
+  @apply bg-blue-600 border-none hover:bg-blue-700 hover:shadow-lg;
+}
+
+/* Form labels should be clearly legible */
+.ant-form-item-label > label {
+  @apply font-medium text-gray-700;
+}
+
+/* Input controls and selects inherit a slight rounding for modern feel */
+.ant-input,
+.ant-input-password,
+.ant-select-selector,
+.ant-picker-input > input,
+.ant-picker,
+.ant-time-picker {
+  @apply rounded-md;
+}
+
+/* Modal windows get rounded corners */
+.ant-modal-content {
+  @apply rounded-xl;
+}
+
+/* Layout backgrounds harmonise with the page background */
+.ant-layout {
+  /* Match the global page background */
+  @apply bg-gray-100;
+}
+
+/*
+ * Sidebar and navigation styles inspired by the provided screenshot.
+ * The left sidebar uses a white background with a subtle border and grey icons.
+ * Active items get a light grey background and darker text to improve contrast.
+ */
+
+/* Sidebar container */
+.app-sider {
+  @apply bg-white border-r border-gray-200;
+}
+
+/* Logo area at top of sidebar */
+.app-logo {
+  @apply flex items-center h-16 px-4 border-b border-gray-200;
+}
+.app-logo__title {
+  @apply font-semibold text-lg text-gray-800;
+}
+
+/* Menu items styling: rounded corners and spacing */
+.ant-menu-light .ant-menu-item {
+  @apply my-1 rounded-xl;
+}
+
+/* Make icons grey by default */
+.ant-menu-light .ant-menu-item .anticon {
+  @apply text-gray-500;
+}
+
+/* Selected menu item has a light background and darker text */
+.ant-menu-light .ant-menu-item-selected {
+  @apply bg-gray-100 text-gray-900;
+}
+.ant-menu-light .ant-menu-item-selected .anticon {
+  @apply text-gray-900;
+}

@@ -1,0 +1,39 @@
+version: '3.8'
+services:
+  mongo:
+    image: mongo:7
+    restart: always
+    container_name: ndis-mongo
+    ports:
+      - '27017:27017'
+    volumes:
+      - mongo-data:/data/db
+  backend:
+    build: ./backend
+    restart: always
+    container_name: ndis-backend
+    ports:
+      - '5000:5000'
+    environment:
+      - MONGO_URI=mongodb://mongo:27017/ndis
+      - JWT_SECRET=supersecretkey
+    depends_on:
+      - mongo
+  frontend:
+    build: ./frontend
+    restart: always
+    container_name: ndis-frontend
+    ports:
+      - '3000:3000'
+    environment:
+      # Point the Vite client at the backend service within the
+      # Docker network.  The axios helper will read this via
+      # import.meta.env.VITE_API_URL during development.  In
+      # production this variable can be overridden by a different
+      # environment file or left undefined to rely on relative paths.
+      - VITE_API_URL=http://backend:5000
+    depends_on:
+      - backend
+
+volumes:
+  mongo-data:
